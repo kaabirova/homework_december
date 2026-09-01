@@ -1,0 +1,31 @@
+form{
+    width: 600px;
+    line-height:25px;
+}
+h2{
+    color: blueviolet;
+    text-align: center;
+    font-weight: bold;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.label-name, .label-self, legend{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+
+}
+.input-self{
+    width: 600px;
+    height: 100px;
+}
+
+fieldset{
+    border: none;
+}
+.submit{
+    margin-left: 12px;
+    background-color: blueviolet;
+    width: 600px;
+    color: white;
+    height: 30px;
+}
