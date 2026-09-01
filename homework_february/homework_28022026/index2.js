@@ -5,6 +5,8 @@ for (let a = 1; a <= 20; a++){
         console.log("Hello")
     } else if (a % 5 === 0){
         console.log("World")
+    }else{
+        console.log(a)
     }
 
 }
