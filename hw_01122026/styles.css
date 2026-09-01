@@ -1,0 +1,64 @@
+
+
+.card{
+    width: 500px;
+    text-align: center;
+    background-color: #ffffff;
+    position:relative;
+    padding:40px 30px;
+    box-sizing: border-box;
+
+}
+.card::before, .card::after {
+    border-width:2px;
+    border-style: solid;
+    position:absolute;
+    content: "";
+    pointer-events: none;
+
+}
+
+.card::before{
+    border-color:  #007BFF;
+    top: -10px;
+    left: -10px;
+    right: 10px;
+    bottom: 10px;
+}
+
+.card::after{
+    border-color: #00AEEF;
+    top: 10px;
+    left: 10px;
+    right: -10px;
+    bottom: -10px;
+}
+
+
+h2{
+    font-size: 24px;
+    margin-bottom: 16px;
+    margin-top:0;
+
+
+}
+
+p{
+    font-size: 16px;
+    margin: 0 0 20px 0;
+}
+
+h2, p, button{
+    font-family: Arial, Helvetica, sans-serif;
+
+
+}
+
+button{
+    appearance: none;
+    border: none;
+    outline: none;
+    background: none;
+    color: blue;
+    cursor: pointer;
+}
