@@ -13,7 +13,7 @@ function knightVsBishop(knightPosition, bishopPosition) {
     for (let i = 0; i <= alphabet.length; i++) {
         if (alphabet[i] === y1) {
             k1 = i + 1;
-            console.log(k1)
+            //console.log(k1)
             break
         }
     }
@@ -47,6 +47,9 @@ function knightVsBishop(knightPosition, bishopPosition) {
 
     //разброс ходов для слона
     let movesBishop = [
+        [-7, -7],
+        [-6, -6],
+        [-5, -5],
         [-4, -4],
         [-3, -3],
         [-2, -2],
@@ -55,13 +58,24 @@ function knightVsBishop(knightPosition, bishopPosition) {
         [2, 2],
         [3, 3],
         [4, 4],
+        [5, 5],
+        [6, 6],
+        [7, 7],
+        [7, -7],
+        [6, -6],
+        [5, -5],
+        [4, -4],
         [3, -3],
         [2, -2],
         [1, -1],
-        [-1, +1],
+        [-1, 1],
         [-2, 2],
         [-3, 3],
-        [-4, 4]
+        [-4, 4],
+        [-5, 5],
+        [-6, 6],
+        [-7, 7]
+
     ]
 
     let b2 //буквы в цифрах для слона
@@ -70,7 +84,7 @@ function knightVsBishop(knightPosition, bishopPosition) {
     for (let i = 0; i <= alphabet.length; i++) {
         if (alphabet[i] === y2) {
             b2 = i + 1;
-            console.log(b2)
+            //console.log(b2)
             break
         }
     }
@@ -85,7 +99,7 @@ function knightVsBishop(knightPosition, bishopPosition) {
         newB2 = b2 + move[1];
         if ((newX2 > 0)&&(newX2 < 9)&&(newB2 > 0)&&(newB2 < 9)) {
             positionBishop.push([newX2, newB2])
-            //console.log("posBishop",positionBishop);
+           // console.log("posBishop",positionBishop);
             return positionBishop
         }
     })
@@ -131,11 +145,19 @@ function knightVsBishop(knightPosition, bishopPosition) {
 
 
 
-///"Knight"
- knightVsBishop([4, "C"], [6, "D"]);
-knightVsBishop([4, "C"], [5, "E"])
-knightVsBishop([1, "A"], [3, "B"])
-knightVsBishop([2, "H"], [4, "G"])
+// ///"Knight"
+//  knightVsBishop([4, "C"], [6, "D"]);
+// knightVsBishop([4, "C"], [5, "E"])
+// knightVsBishop([1, "A"], [3, "B"])
+// knightVsBishop([2, "H"], [4, "G"])
+//
+//  knightVsBishop([2, "G"], [6, "C"]); //"Bishop"
+//  knightVsBishop([2, "F"], [7, "B"]); //"None"
 
- knightVsBishop([2, "G"], [6, "C"]); //"Bishop"
- knightVsBishop([2, "F"], [7, "B"]); //"None"
+
+knightVsBishop([1, "H"], [8, "A"]);
+knightVsBishop([4, "E"], [7, "B"]);
+knightVsBishop([5, "D"], [2, "A"]);
+knightVsBishop([8, "H"], [1, "A"]);
+knightVsBishop([2, "B"], [6, "F"]);
+knightVsBishop([1, "A"], [3, "C"]);
