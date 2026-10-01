@@ -1,0 +1,13 @@
+const emails = [
+    'user1@example.com',
+    'guest@sample.org',
+    'admin@test.net',
+    'another@example.com'
+];
+
+emails.forEach(x => console.log("Отправляем письмо на адрес:", x));
+
+// Отправляем письмо на адрес: user1@example.com...
+// Отправляем письмо на адрес: guest@sample.org...
+// Отправляем письмо на адрес: admin@test.net...
+// Отправляем письмо на адрес: another@example.com...
