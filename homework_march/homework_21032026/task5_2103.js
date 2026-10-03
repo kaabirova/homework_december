@@ -9,6 +9,7 @@ function isPrime(num) {
     for (let i = 2; i <= num; i++) {
 divisors.push(i);
     }
+
     return divisors.every(i => num % i !==0)
 }
 
