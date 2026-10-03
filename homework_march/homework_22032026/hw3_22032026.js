@@ -10,25 +10,32 @@ const students = {
 //  Kate: ...
 
 
-let sum = 0;
-let a = 0;
-let b = 0;
-let arr = []
 
-let keys = Object.keys(students);
+let sumJack = 0;
+let sumBob = 0;
+let sumKate = 0;
 
-for (let i = 0; i < 3; i++) {
-    arr = [...keys[i]];
-    console.log(arr);
+let assignJack = Object.assign(students.Jack);
+let assignBob = Object.assign(students.Bob);
+let assignKate = Object.assign(students.Kate);
+
+
+for (let i = 0; i < assignJack.length; i++) {
+    sumJack += assignJack[i];
 }
+let totalJack = (sumJack / assignJack.length);
+console.log("Jack:", totalJack);
 
-students.Jack.forEach(element => {
-   a +=  element
-    console.log(a)
-    return a
-})
-    b = (a / arr.length)
-    console.log(Object.keys(students[1]), b)
+for (let i = 0; i < assignBob.length; i++) {
+    sumBob += assignBob[i];
+}
+let totalBob = (sumBob / assignBob.length);
+console.log("Bob:", totalBob);
 
+for (let i = 0; i < assignKate.length; i++) {
+    sumKate += assignKate[i];
+}
+let totalKate = (sumKate / assignKate.length);
+console.log("Kate:", totalKate);
 
 

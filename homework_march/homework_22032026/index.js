@@ -60,3 +60,14 @@ for (let key in user){
 console.log(removedObj);
 
 
+// Object.keys(obj) - Только ключи
+// Object.values(obj) -Только значения
+// Object.entries(obj) - Пары [ключ, значение]
+// Object.fromEntries(arr) - Обратно из пар в объект
+//
+///reduce - "сворачивает" (сокращает) массив к одному единственному значению
+// (это может быть число, строка, объект или даже новый массив)
+// Сумма чисел -arr.reduce((acc, n) => acc + n, 0)
+// Поиск Max / Min  -arr.reduce((acc, n) => n > acc ? n : acc, arr[0])
+// Группировка / Подсчет - arr.reduce((acc, x) => { acc[x] = (acc[x] || 0) + 1; return acc; }, {})
+// Трансформация объекта - Object.entries(obj).reduce((acc, [k, v]) => { ...; return acc; }, {})
