@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="styles.css">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign</title>
+</head>
+<body>
+<form action="">
+    <input type="text" name="login" id="login" placeholder="Login">
+    <input type="password" name="password" id="password" placeholder="Password">
+
+    <br><input type="checkbox" name="show" id="show" >
+    <label for="show">Показать пароль</label>
+</form>
+
+
+<script>
+
+    const password = document.querySelector('#password')
+    const show = document.querySelector('#show')
+
+    function checkPassword(event){
+        if (event.target.checked){
+            password.type = 'text'
+        }else{
+            password.type = 'password'
+        }
+
+    }
+
+    show.addEventListener('change', checkPassword);
+</script>
+</body>
+</html>

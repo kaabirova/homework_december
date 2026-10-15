@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        .modal {
+            display: none;
+            position: absolute;
+            inset: 0;
+            background-color: rgba(0 0 0 / 0.4);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal_active {
+            display: flex;
+        }
+    </style>
+</head>
+<body>
+
+<button class="modal-open-button">Открыть</button>
+
+<div class="modal">
+    <p>Модальное окно</p>
+    <button class="modal-close-button">Закрыть</button>
+</div>
+
+<script>
+    const modalOpenButton = document.querySelector('.modal-open-button');
+    const modal = document.querySelector('.modal');
+    const modalCloseButton = document.querySelector('.modal-close-button');
+
+function closeModal(event){
+    if( event.key === 'Escape' ) {
+        modal.classList.remove('modal_active');
+        document.removeEventListener('keydown', (closeModal) )
+
+
+    }
+}
+    modalOpenButton.addEventListener('click', () => {
+        modal.classList.add('modal_active');
+    })
+
+    modalCloseButton.addEventListener('click', () => {
+        modal.classList.remove('modal_active');
+        document.removeEventListener('keydown', (closeModal) )
+    })
+    document.addEventListener('keydown', (event) => {
+       if( event.key === 'Escape' ) {
+           modal.classList.remove('modal_active');
+
+       }
+
+    })
+
+
+</script>
+
+</body>
+</html>
