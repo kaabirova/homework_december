@@ -1,21 +1,39 @@
-const words =["book", "code", "plane", "java"];
+// const words =[ "book", "code","plane",  "java"];
+const words =[ "book"];
 
-let isValid = true;
-let countVowels = 0;
-let countConsonants = 0;
 const vowels = ["a","e","u","i","o"];
 let result = [];
 
-for (let j = 0; j < words.length; j++) {
-    for (let l = 0; l < words[j].length; l++) {
-        countVowels = vowels.includes(words[j][l])
+
+
+for (let i = 0; i < words.length; i++) {
+    // let word = words[i];
+    let countVowels = 0;
+    let countConsonants = 0;
+
+    for (let j = 0; j < words[i].length; j++) {
+        // let c = word[j];
+        let isVowel = false;
+        for (let k = 0; k < vowels.length; k++) {
+           if( vowels[k].includes(words[i][j])){
+               countVowels++;
+               isVowel = true;
+           }else {
+               isVowel = false;
+           }
+        }
+        //
+        // let isVowel =
+        // (c == 'a' || c == 'e' || c == 'u' || c == 'i' || c == 'o');
+
+        if(isVowel === false){
+            countConsonants++;
+        }
+        console.log(countVowels, countConsonants);
+
+        }
+    if (countVowels === countConsonants) {
+            result.push(words[i]);
+            console.log(result)
     }
-
-}
-
-isValid = countVowels === countConsonants;
-if (isValid) {
-    result.push(words[j]);
-    console.log(result);
-
 }
