@@ -84,16 +84,89 @@ function unprofitableProductsFunc(data){
     }
     return count;
 }
+function getCustomerPurchasesText(data) {
+    const customersMap = {};
+    data.customers.forEach(customer => {
+        customersMap[customer.id] = {
+            name: `${customer.first_name} ${customer.last_name}`,
+            workplace: customer.workplace,
+            receiptsCount: 0,
+            totalSpent: 0
+        };
+    });
 
+    data.purchase_records.forEach(record => {
+        const customer = customersMap[record.customer_id];
+        if (customer) {
+            customer.receiptsCount += 1;
+            customer.totalSpent += record.total_amount;
+        }
+    });
 
-function customersName(data){
-   let customers =[];
-    for (let i = 0; i < data.customers.length; i++) {
-        customers.push((data.customers[i].last_name)+ " " +(data.customers[i].first_name) + "(" + (data.customers[i].workplace) +")" );
-    }
-    return customers
+    const lines = ["=== ПОКУПКИ ПО ПОКУПАТЕЛЯМ ==="];
+
+    Object.values(customersMap).forEach(customer => {
+        const totalFormatted = customer.totalSpent.toFixed(2);
+        lines.push(`${customer.name} (${customer.workplace}): ${customer.receiptsCount} чеков, ${totalFormatted} тг.`);
+    });
+
+    return lines.join("\n");
 }
+function getSellerPurchasesText(data) {
+    const sellersMap = {};
+    data.sellers.forEach(seller => {
+        sellersMap[seller.id] = {
+            name: `${seller.first_name} ${seller.last_name}`,
+            position: seller.position,
+            receiptsCount: 0,
+            totalSpent: 0
+        };
+    });
 
+    data.purchase_records.forEach(record => {
+        const seller = sellersMap[record.seller_id];
+        if (seller) {
+            seller.receiptsCount += 1;
+            seller.totalSpent += record.total_amount;
+        }
+    });
+
+    const lines = ["=== ВЫРУЧКА ПО ПРОДАВЦАМ ==="];
+
+    Object.values(sellersMap).forEach(seller => {
+        const totalFormatted = seller.totalSpent.toFixed(2);
+        lines.push(`${seller.name} (${seller.position}): ${seller.receiptsCount} чеков, ${totalFormatted} тг.`);
+    });
+
+    return lines.join("\n");
+}
+function getProductsPurchasesText(data) {
+    const categoriesMap = {};
+
+    data.products.forEach(product => {
+        const margin = product.sale_price - product.purchase_price;
+
+        if (!categoriesMap[product.category]) {
+            categoriesMap[product.category] = {
+                name: product.category,
+                totalMargin: 0,
+                count: 0
+            };
+        }
+
+        categoriesMap[product.category].totalMargin += margin;
+        categoriesMap[product.category].count += 1;
+    });
+
+    const lines = ["=== СРЕДНЯЯ МАРЖА ПО КАТЕГОРИЯМ ==="];
+
+    Object.values(categoriesMap).forEach(category => {
+        const avgMargin = (category.totalMargin / category.count).toFixed(2);
+        lines.push(`${category.name}: ${avgMargin} тг. средняя маржа`);
+    });
+
+    return lines.join("\n");
+}
 
 
 function generalStatistics(data){
@@ -110,11 +183,9 @@ function generalStatistics(data){
     console.log("Итого убыточных товаров", unprofitableProductsFunc(data), "из", allProductsFunc(data))  ;
     console.log("=== ТОВАРОВ ПО КАТЕГОРИЯМ ===");
     console.log("Категории:",countProductsByCategory(data));
-    console.log("=== ПОКУПКИ ПО ПОКУПАТЕЛЯМ ===");
-    console.log (customersName(data));
-
-
-
+    console.log (getCustomerPurchasesText(data));
+    console.log(getSellerPurchasesText(data));
+    console.log(getProductsPurchasesText(data));
 
 }
 
